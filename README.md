@@ -1,6 +1,6 @@
 # Password Strength Calculator
 
-Simple password checker. It will show the strenght of your password from 0 to 10 points.
+Simple password checker. It shows the strenght of your password from 0 to 10 points.
 
 # Quickstart
 

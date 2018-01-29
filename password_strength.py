@@ -37,7 +37,7 @@ def get_blacklisted_words():
     if not os.path.exists("blacklist.txt"):
         return None
     with open("blacklist.txt", "r") as file:
-        return (file.read()).split("\n")
+        return file.read().split("\n")
 
 
 def get_password_strength(password):

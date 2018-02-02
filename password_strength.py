@@ -10,13 +10,13 @@ def has_upper_and_lower_case(password):
 
 
 def has_numeric_digits(password):
-    if re.match(".*\d", password):
+    if re.search(".*\d", password):
         return 1
     return -1
 
 
 def has_special_char(password):
-    if re.match(".*\W", password):
+    if re.search(".*\W", password):
         return 2
     return -2
 
@@ -41,17 +41,17 @@ def get_blacklisted_words():
 
 
 def get_password_strength(password):
-    strength = sum([has_upper_and_lower_case(password),
-                    has_numeric_digits(password),
-                    has_special_char(password),
-                    good_length(password)])
+    strength = sum([
+            has_upper_and_lower_case(password),
+            has_numeric_digits(password),
+            has_special_char(password),
+            good_length(password)
+    ])
 
     blacklisted_words = get_blacklisted_words()
     if blacklisted_words:
         strength += is_in_blacklist_file(password, blacklisted_words)
-    if strength < 0:
-        return 0
-    return strength
+    return max(0, strength)
 
 
 if __name__ == '__main__':

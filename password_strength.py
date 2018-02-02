@@ -41,6 +41,8 @@ def get_blacklisted_words():
 
 
 def get_password_strength(password):
+    min_strength = 0
+
     strength = sum([
             has_upper_and_lower_case(password),
             has_numeric_digits(password),
@@ -51,7 +53,7 @@ def get_password_strength(password):
     blacklisted_words = get_blacklisted_words()
     if blacklisted_words:
         strength += is_in_blacklist_file(password, blacklisted_words)
-    return max(0, strength)
+    return max(min_strength, strength)
 
 
 if __name__ == '__main__':
